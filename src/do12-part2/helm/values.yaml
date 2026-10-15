@@ -1,0 +1,133 @@
+# Default values for S21 DO12.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+projectName: do12-part2
+version: 0.0.1
+
+labels:
+  project: do12-part2
+  env: prod
+
+imagePullSecrets: 
+  - name: regcred
+    value: <Your Docker Login in base64>
+
+rabbitMQ:
+  # Do not fill to use default values
+  # Login and Pass should be in Base64
+  rabbitLogin:
+  rabbitPass:
+  rabbitQueue:
+  rabbitExchange:
+  rabbitPort:
+  # If you are using your own RabbitMQ, then fill "rabbitHost"
+  rabbitHost:
+
+postgres:
+  # Do not fill to use default values
+  # Login and Pass should be in Base64
+  dbLogin:
+  dbPass:
+  dbPort:
+  pvLocalPath: /nfs/do12-part2/storage/postgresql/data
+  image: docker.mcshine.ru/library/do12-db:0.1
+  imagePullSecrets: 
+    enabled: true
+    name: regcred
+  # If you are using your own database, then fill "dbHost"
+  dbHost:
+
+
+microServices:
+  - name: booking
+    serviceName: booking-service
+    image: docker.mcshine.ru/library/do12-booking:0.1
+    port: 8083
+    dbName: reservations_db
+    useRabbit: true
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: false
+  - name: gateway
+    serviceName: gateway-service
+    image: docker.mcshine.ru/library/do12-gateway:0.1
+    port: 8087
+    dbName: false
+    useRabbit: false
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: /api/v1/gateway
+  - name: hotel
+    serviceName: hotel-service
+    image: docker.mcshine.ru/library/do12-hotel:0.1
+    port: 8082
+    dbName: hotels_db
+    useRabbit: false
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: false
+  - name: loyalty
+    serviceName: loyalty-service
+    image: docker.mcshine.ru/library/do12-loyalty:0.1
+    port: 8085
+    dbName: balances_db
+    useRabbit: false
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: false
+  - name: payment
+    serviceName: payment-session
+    image: docker.mcshine.ru/library/do12-payment:0.1
+    port: 8084
+    dbName: payments_db
+    useRabbit: false
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: false
+  - name: report
+    serviceName: report-service
+    image: docker.mcshine.ru/library/do12-report:0.1
+    port: 8086
+    dbName: statistics_db
+    useRabbit: true
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: false
+  - name: session
+    serviceName: session-service
+    image: docker.mcshine.ru/library/do12-session:0.1
+    port: 8081
+    dbName: users_db
+    useRabbit: false
+    replicaCount: 1
+    imagePullSecrets: 
+      enabled: true
+      name: regcred
+    ingressPath: /api/v1/auth
+  
+ingress:
+  enabled: true
+  className: "contour"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+  host: do12-part2.mcshine.ru
+  tlsSecretName: do12-part2.mcshine.ru
+
+
+
+

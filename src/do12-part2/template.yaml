@@ -1,0 +1,1253 @@
+---
+# Source: s21-DO-microservices/templates/application/app-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+  name: do12-part2-app-secret
+  namespace: do12-part2
+data:
+  .srv_secrets: |
+    cHJpdmF0ZUtleT1NSUlFdlFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLY3dnZ1NqQWdFQUFvSUJBUUM5UTFobDZvc3NDZzVUcjQzSVcwcHgyV3owdERPS1JIbmNyZVpjZXczRys2M1F1WHJMU2I1QlJoMjRxMGVqNFcrV2o4LzZSUjZ2d0cxaEZ0UElCcXk2T1lVdkVkQm1PYXk5ZUVwelFjMlh5MjUzcVNReXhjbzRGbXlOTEF3ZnlrMEpTNURLZGFnVDZjdDNBcVFlOStvR3NFSGYxOENXRC9kbllyZktJNjQ0dXFuaUkzTHpyaytZbkl3WjhCQ2hLTU40MHFkN1hrUnVXc0pCR0VKcitocDFGMUt2YVliUHovZ3F2QkpTK0lsRzM3LzZtTzF4b01hRGZQeEVVQ0piSGlXUzhQY1NlQzlUbGxWVnRDK295UG5RellFYkJoN1pmeGJ3QUQzeTVGVzNxeFdOMzNzUTUzWGFIN3pIb25kTUFRSjZoUVJPQ2I2TWwvMGJCS2ZVMGh6OUFnTUJBQUVDZ2dFQU5JNTZBcnN4OElYT1dyRGFaM1BxWlZraVo0V085bXR6aDdPR3o5R2dEc3lmQk9JczFqemhKMUVvT2JyZWh3UzRMeEE2aWQ0ZDJtSk9QWExRVnJCNzBLN2ViQ2EvUDFQdXd5S2ZVZ2hJNWtrb29QUUlTRTBpalphMGlETmVIb25ZQUtmS1NsNkgwUmZRVjNrVlNFQkI3WitPZTNGM1duU09tRmdTZjRDUEJkTmMyNDBrYW5RbHhzbUtqc0Rtc3hMZVBpWU54VTZ2RG9adC9KS1FtU3dRVUlnem5NbTd1cEVtaDNVUjhxN043NTdJK2RURWhHeHM4TExHeXZKMm5Hbm9sSDlmcGtYSmxBS0hBVXZuWDFOZlVrQ2dJR2lWcXBzeHdIYjVqVG1qcXBIMVU4dXNhU1BaREQwdUxmNERMVWpJZ2RkcFNHY1VJaktsYU5POXNRWHNCUUtCZ1FENVhwTk1xZ0laZ3RmRU9WSjQ0YXVNWnFDc0l1S1h3c0lDTlptZXFTa3Y1SjI5b3YzVi9ma0JqRHB3aXlFWE8vOUhlRk9VRUdTTkdlRlBGNGhhMEtuTkZtZVR3RENJUEEydnlGM1owNDlHZlJ5dGM0cURxd2RwbFZqZ1BCUEtmckdObUdkSGxLS29FSEdqcFdudUpnT2tOaGVuUEtHN3piZXZwdHk3VHFnbHV3S0JnUURDUzZKRWw5ajM0Z3A1K01veElia1h0MVdPd25nbkZ3UnNja2xURUdKNHdaM2k2R3RLSU9WellkN1ZEcWdvbUIvam5rRFFsQks0N096QUE1NGJKQmtKNnc4M2NER1I4RDUxYXhZS2dLRytLZDhFT2VFTjRQWStqakt5VXBLVTNvOG8rK0pLRUtzOEoycmFlbWIrNVlsZ2lZMVplRE5oTDRMclVWYTNjSXlBcHdLQmdHWG81NnU2QXJlb1NFTng1YWx2R0d0OWVZWS9qM2pUNS9OOU1qV3NEaC83ZnhlRDU5YXZQemNKdHN4Tm40MWVRSnBWcTFwa1JLT0JneG1PbFhQL3VKVU81ZTkwNktDVVlrZUhUQXQ4TVI1dWZPekp2ajdIQTNWN3ltR0JTOWxDWTQ5cFREUHRvM2VwbUxkM0gwNXJES3ZzUzBoV09BYUhNTjFCQlE0ck8vNkhBb0dBTVFKSS9RcGNaVEowT0E0RVdsNUtST3d1dmFMYUVlb2hhSVZ2YjI5YmwyQW5SandnREFPK1BOdDhETHYwdU1DZWtwaXhlcXRQQ2F4aGo1R2FDUGlUQkVoeGZ5ZGlxWkF6QVFVdyt4YzFOVFYwbHFsTzFtUmZXS29mcVpGZ2ZnS2hrOUh0WTRkTzJnNkxTbTdEbWhvbUM5N0djOEg1RzlPVEwyNUY5R0dFWDFNQ2dZRUE1Q2txQXZsSmZ5Q201bEdwMmdMTWZ3RWxGMW9ZdGdDNXhSRHB6STZEbk1qS2hVeGVKYU1nUmthbTNtdk1BMHpnNThaVFk5cStDZVNTeURvaE5acExEWm9tRzdtRXVORFdBUGJwYWZvOWc4cTFnN3VjV0dlRlJnVkFtZjB4bW5KSEhtQXFPRGRUOVgwMmFiSlpNdW1hd0NSRHRScFBLdk50YW1POWpleDlZZ009CnB1YmxpY0tleT1NSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXZVTllaZXFMTEFvT1U2K055RnRLY2RsczlMUXppa1I1M0szbVhIc054dnV0MExsNnkwbStRVVlkdUt0SG8rRnZsby9QK2tVZXI4QnRZUmJUeUFhc3VqbUZMeEhRWmptc3ZYaEtjMEhObDh0dWQ2a2tNc1hLT0Jac2pTd01IOHBOQ1V1UXluV29FK25MZHdLa0h2ZnFCckJCMzlmQWxnLzNaMkszeWlPdU9McXA0aU55ODY1UG1KeU1HZkFRb1NqRGVOS25lMTVFYmxyQ1FSaENhL29hZFJkU3IybUd6OC80S3J3U1V2aUpSdCsvK3BqdGNhREdnM3o4UkZBaVd4NGxrdkQzRW5ndlU1WlZWYlF2cU1qNTBNMkJHd1llMlg4VzhBQTk4dVJWdDZzVmpkOTdFT2QxMmgrOHg2SjNUQUVDZW9VRVRnbStqSmY5R3dTbjFOSWMvUUlEQVFBQgo=
+---
+# Source: s21-DO-microservices/templates/docker-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+  name: regcred
+  namespace: do12-part2
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: 
+    <Your Docket login in Base64>
+---
+# Source: s21-DO-microservices/templates/postgres/postgres-secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+  name: do12-part2-postgres-secrets
+  namespace: do12-part2
+type: Opaque
+data:
+  POSTGRES_USER: "cG9zdGdyZXM="
+  POSTGRES_PASSWORD: "TXlTdHJvbmdQYXNzd29yZA=="
+---
+# Source: s21-DO-microservices/templates/rabbit/rabbitmq-secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+  name: do12-part2-rabbit-secrets
+  namespace: do12-part2
+type: Opaque
+data:
+  RABBITMQ_DEFAULT_USER: "dXNlcg=="
+  RABBITMQ_DEFAULT_PASS: "TXlTdHJvbmdQYXNzd29yZEZvclJhYmJpdA=="
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-booking-service-app
+  name: do12-part2-booking-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=reservations_db
+    RABBIT_MQ_HOST=do12-part2-rabbit-headless-svc
+    RABBIT_MQ_PORT=5672
+    RABBIT_MQ_QUEUE_NAME=messagequeue
+    RABBIT_MQ_EXCHANGE=messagequeue-exchange
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-gateway-service-app
+  name: do12-part2-gateway-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-hotel-service-app
+  name: do12-part2-hotel-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=hotels_db
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-loyalty-service-app
+  name: do12-part2-loyalty-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=balances_db
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-payment-service-app
+  name: do12-part2-payment-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=payments_db
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-report-service-app
+  name: do12-part2-report-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=statistics_db
+    RABBIT_MQ_HOST=do12-part2-rabbit-headless-svc
+    RABBIT_MQ_PORT=5672
+    RABBIT_MQ_QUEUE_NAME=messagequeue
+    RABBIT_MQ_EXCHANGE=messagequeue-exchange
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/application/app-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-session-service-app
+  name: do12-part2-session-service-config
+  namespace: do12-part2
+data:
+  srv_envs: |
+    POSTGRES_HOST=do12-part2-postgres-headless-svc
+    POSTGRES_PORT=5432
+    POSTGRES_DB=users_db
+    BOOKING_SERVICE_HOST=do12-part2-booking-service-svc.do12-part2.svc
+    BOOKING_SERVICE_PORT=8083
+    GATEWAY_SERVICE_HOST=do12-part2-gateway-service-svc.do12-part2.svc
+    GATEWAY_SERVICE_PORT=8087
+    HOTEL_SERVICE_HOST=do12-part2-hotel-service-svc.do12-part2.svc
+    HOTEL_SERVICE_PORT=8082
+    LOYALTY_SERVICE_HOST=do12-part2-loyalty-service-svc.do12-part2.svc
+    LOYALTY_SERVICE_PORT=8085
+    PAYMENT_SERVICE_HOST=do12-part2-payment-service-svc.do12-part2.svc
+    PAYMENT_SERVICE_PORT=8084
+    REPORT_SERVICE_HOST=do12-part2-report-service-svc.do12-part2.svc
+    REPORT_SERVICE_PORT=8086
+    SESSION_SERVICE_HOST=do12-part2-session-service-svc.do12-part2.svc
+    SESSION_SERVICE_PORT=8081
+---
+# Source: s21-DO-microservices/templates/rabbit/rabbitmq-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-rabbit-app
+  name: do12-part2-rabbit-config
+  namespace: do12-part2
+data:
+  RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit disk_free_limit 2147483648"
+---
+# Source: s21-DO-microservices/templates/postgres/postgres-storclass.yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: do12-part2-postgres-storage-class
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+# Source: s21-DO-microservices/templates/postgres/postgres-pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: do12-part2-postgres-data-pv
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: do12-part2-postgres-storage-class
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /nfs/do12-part2/storage/postgresql/data
+    type: DirectoryOrCreate
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-booking-service-app
+  name: do12-part2-booking-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8083
+    port: 8083
+    protocol: TCP
+    targetPort: 8083
+  selector:
+    app: do12-part2-booking-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-gateway-service-app
+  name: do12-part2-gateway-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8087
+    port: 8087
+    protocol: TCP
+    targetPort: 8087
+  selector:
+    app: do12-part2-gateway-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-hotel-service-app
+  name: do12-part2-hotel-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8082
+    port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    app: do12-part2-hotel-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-loyalty-service-app
+  name: do12-part2-loyalty-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8085
+    port: 8085
+    protocol: TCP
+    targetPort: 8085
+  selector:
+    app: do12-part2-loyalty-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-payment-service-app
+  name: do12-part2-payment-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8084
+    port: 8084
+    protocol: TCP
+    targetPort: 8084
+  selector:
+    app: do12-part2-payment-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-report-service-app
+  name: do12-part2-report-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8086
+    port: 8086
+    protocol: TCP
+    targetPort: 8086
+  selector:
+    app: do12-part2-report-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/application/app-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-session-service-app
+  name: do12-part2-session-service-svc
+  namespace: do12-part2
+spec:
+  ports:
+  - name: http-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: do12-part2-session-service-app
+  type: ClusterIP
+---
+# Source: s21-DO-microservices/templates/postgres/postgres-headless-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-postgres-app
+  name: do12-part2-postgres-headless-svc
+  namespace: do12-part2
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: postgresql
+    protocol: TCP 
+  selector:
+    app: do12-part2-postgres-app
+---
+# Source: s21-DO-microservices/templates/rabbit/rabbitmq-headless-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-rabbit-app
+  name: do12-part2-rabbit-headless-svc
+  namespace: do12-part2
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: rabbimq
+    port: 5672
+    targetPort: rabbimq
+    protocol: TCP 
+  selector:
+    app: do12-part2-rabbit-app
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-booking-service-app
+  name: do12-part2-booking-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-booking-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-booking-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-booking:0.1
+        imagePullPolicy: Always
+        name: do12-part2-booking-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'booking-service'
+        ports:
+          - containerPort: 8083
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+          - name: RABBIT_MQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_PASS
+          - name: RABBIT_MQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-booking-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-gateway-service-app
+  name: do12-part2-gateway-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-gateway-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-gateway-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-gateway:0.1
+        imagePullPolicy: Always
+        name: do12-part2-gateway-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'gateway-service'
+        ports:
+          - containerPort: 8087
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-gateway-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-hotel-service-app
+  name: do12-part2-hotel-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-hotel-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-hotel-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-hotel:0.1
+        imagePullPolicy: Always
+        name: do12-part2-hotel-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'hotel-service'
+        ports:
+          - containerPort: 8082
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-hotel-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-loyalty-service-app
+  name: do12-part2-loyalty-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-loyalty-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-loyalty-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-loyalty:0.1
+        imagePullPolicy: Always
+        name: do12-part2-loyalty-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'loyalty-service'
+        ports:
+          - containerPort: 8085
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-loyalty-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-payment-service-app
+  name: do12-part2-payment-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-payment-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-payment-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-payment:0.1
+        imagePullPolicy: Always
+        name: do12-part2-payment-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'payment-session'
+        ports:
+          - containerPort: 8084
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-payment-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-report-service-app
+  name: do12-part2-report-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-report-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-report-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-report:0.1
+        imagePullPolicy: Always
+        name: do12-part2-report-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'report-service'
+        ports:
+          - containerPort: 8086
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+          - name: RABBIT_MQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_PASS
+          - name: RABBIT_MQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-report-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/application/app-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-session-service-app
+  name: do12-part2-session-service-app
+  namespace: do12-part2
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: do12-part2-session-service-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-session-service-app
+    spec:
+      containers:
+      - image: docker.mcshine.ru/library/do12-session:0.1
+        imagePullPolicy: Always
+        name: do12-part2-session-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          - 'do12-part2-postgres-headless-svc.do12-part2.svc:5432'
+          - 'session-service'
+        ports:
+          - containerPort: 8081
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: do12-part2-session-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: do12-part2-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+---
+# Source: s21-DO-microservices/templates/postgres/postgres-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-postgres-app
+  name: do12-part2-postgres-app
+  namespace: do12-part2
+spec:
+  serviceName: do12-part2-postgres-headless-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: do12-part2-postgres-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-postgres-app
+    spec:
+      containers:
+      - name: do12-part2-postgres-app
+        image: docker.mcshine.ru/library/do12-db:0.1
+        imagePullPolicy: Always
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-postgres-secrets
+                key: POSTGRES_USER
+          - name: PGDATA
+            value: /data/pgdata
+        ports:
+          - containerPort: 5432
+            name: postgres
+        volumeMounts:
+          - name: postgres-data
+            mountPath: /data
+        resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+            limits:
+              memory: "2Gi"
+              cpu: "2"
+      imagePullSecrets:
+        - name: regcred
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "do12-part2-postgres-storage-class"
+      resources:
+        requests:
+          storage: 1Gi
+---
+# Source: s21-DO-microservices/templates/rabbit/rabbitmq-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+    app: do12-part2-rabbit-app
+  name: do12-part2-rabbit-app
+  namespace: do12-part2
+spec:
+  serviceName: do12-part2-rabbit-headless-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: do12-part2-rabbit-app
+  template:
+    metadata:
+      labels:
+        app: do12-part2-rabbit-app
+    spec:
+      containers:
+      - name: do12-part2-rabbit-app
+        image: rabbitmq:3-management-alpine
+        env:
+          - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+            valueFrom:
+              configMapKeyRef:
+                name: do12-part2-rabbit-config
+                key: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+          - name: RABBITMQ_DEFAULT_PASS
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_PASS
+          - name: RABBITMQ_DEFAULT_USER
+            valueFrom:
+              secretKeyRef:
+                name: do12-part2-rabbit-secrets
+                key: RABBITMQ_DEFAULT_USER
+        ports:
+          - containerPort: 5672
+            name: rabbit
+---
+# Source: s21-DO-microservices/templates/application/app-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    version: 0.0.1
+    env: prod
+    project: do12-part2
+  name: do12-part2-ingress
+  namespace: do12-part2
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+spec:
+  ingressClassName: contour
+  tls:
+    - secretName: do12-part2.mcshine.ru
+      hosts:
+        - do12-part2.mcshine.ru
+  rules:
+    - host: do12-part2.mcshine.ru
+      http:
+        paths:
+        - path: /api/v1/gateway
+          pathType: Prefix
+          backend:
+            service:
+              name: do12-part2-gateway-service-svc
+              port:
+                number: 8087
+        - path: /api/v1/auth
+          pathType: Prefix
+          backend:
+            service:
+              name: do12-part2-session-service-svc
+              port:
+                number: 8081

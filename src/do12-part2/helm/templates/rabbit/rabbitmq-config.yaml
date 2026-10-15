@@ -1,0 +1,16 @@
+{{ if not .Values.rabbitMQ.rabbitHost }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: {{ .Values.version }}
+    {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    app: {{ .Values.projectName }}-rabbit-app
+  name: {{ .Values.projectName }}-rabbit-config
+  namespace: {{ .Release.Namespace }}
+data:
+  RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit disk_free_limit 2147483648"
+{{ end }}

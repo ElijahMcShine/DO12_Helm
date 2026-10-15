@@ -1,0 +1,51 @@
+{{ if not .Values.rabbitMQ.rabbitHost }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    version: {{ .Values.version }}
+    {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    app: {{ .Values.projectName }}-rabbit-app
+  name: {{ .Values.projectName }}-rabbit-app
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: {{ .Values.projectName }}-rabbit-headless-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.projectName }}-rabbit-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.projectName }}-rabbit-app
+    spec:
+      containers:
+      - name: {{ .Values.projectName }}-rabbit-app
+        image: rabbitmq:3-management-alpine
+        env:
+          - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.projectName }}-rabbit-config
+                key: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+          - name: RABBITMQ_DEFAULT_PASS
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.projectName }}-rabbit-secrets
+                key: RABBITMQ_DEFAULT_PASS
+          - name: RABBITMQ_DEFAULT_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.projectName }}-rabbit-secrets
+                key: RABBITMQ_DEFAULT_USER
+        ports:
+          {{- if .Values.rabbitMQ.rabbitPort }}
+          - containerPort: {{ .Values.rabbitMQ.rabbitPort }}
+          {{- else }}
+          - containerPort: 5672
+          {{- end }}
+            name: rabbit
+{{ end }}

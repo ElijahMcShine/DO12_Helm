@@ -1,0 +1,57 @@
+{{ $top := . }}
+{{ range .Values.microServices }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    version: {{ $top.Values.version }}
+    {{- with $top.Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    app: {{ $top.Values.projectName }}-{{ .name }}-service-app
+  name: {{ $top.Values.projectName }}-{{ .name }}-service-config
+  namespace: {{ $top.Release.Namespace }}
+data:
+  srv_envs: |
+    {{- if .dbName }}
+    {{- if $top.Values.postgres.dbHost }}
+    POSTGRES_HOST={{ $top.Values.postgres.dbHost }}
+    {{- else }}
+    POSTGRES_HOST={{ $top.Values.projectName }}-postgres-headless-svc
+    {{- end }}
+    {{- if $top.Values.postgres.dbPort }}
+    POSTGRES_PORT={{ $top.Values.postgres.dbPort }}
+    {{- else }}
+    POSTGRES_PORT=5432
+    {{- end }}
+    POSTGRES_DB={{ .dbName }}
+    {{- end }}
+    {{- if .useRabbit }}
+    {{- if $top.Values.rabbitMQ.rabbitHost }}
+    RABBIT_MQ_HOST={{ $top.Values.rabbitMQ.rabbitHost }}
+    {{- else }}
+    RABBIT_MQ_HOST={{ $top.Values.projectName }}-rabbit-headless-svc
+    {{- end }}
+    {{- if $top.Values.rabbitMQ.rabbitPort }}
+    RABBIT_MQ_PORT={{ $top.Values.rabbitMQ.rabbitPort }}
+    {{- else }}
+    RABBIT_MQ_PORT=5672
+    {{- end }}
+    {{- if $top.Values.rabbitMQ.rabbitQueue }}
+    RABBIT_MQ_QUEUE_NAME={{ $top.Values.rabbitMQ.rabbitQueue }}
+    {{- else }}
+    RABBIT_MQ_QUEUE_NAME=messagequeue
+    {{- end }}
+    {{- if $top.Values.rabbitMQ.rabbitExchange }}
+    RABBIT_MQ_EXCHANGE={{ $top.Values.rabbitMQ.rabbitExchange }}
+    {{- else }}
+    RABBIT_MQ_EXCHANGE=messagequeue-exchange
+    {{- end }}
+    {{- end }}
+    {{- range $top.Values.microServices }}
+    {{ (upper .name) }}_SERVICE_HOST={{ $top.Values.projectName }}-{{ .name }}-service-svc.{{ $top.Values.projectName }}.svc
+    {{ (upper .name) }}_SERVICE_PORT={{ .port }}
+    {{- end }}
+{{ end }}
+

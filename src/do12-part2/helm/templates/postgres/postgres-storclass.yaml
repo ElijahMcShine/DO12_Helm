@@ -1,0 +1,11 @@
+{{ if not .Values.postgres.dbHost }}
+{{ if .Values.postgres.pvLocalPath }}
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Values.projectName }}-postgres-storage-class
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+{{ end }}
+{{ end }}

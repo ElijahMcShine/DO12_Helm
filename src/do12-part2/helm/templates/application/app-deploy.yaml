@@ -1,0 +1,108 @@
+{{ $top := . }}
+{{ range .Values.microServices }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: {{ $top.Values.version }}
+    {{- with $top.Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    app: {{ $top.Values.projectName }}-{{ .name }}-service-app
+  name: {{ $top.Values.projectName }}-{{ .name }}-service-app
+  namespace: {{ $top.Release.Namespace }}
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: {{ .replicaCount }}
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: {{ $top.Values.projectName }}-{{ .name }}-service-app
+  template:
+    metadata:
+      labels:
+        app: {{ $top.Values.projectName }}-{{ .name }}-service-app
+    spec:
+      containers:
+      - image: {{ .image }}
+        imagePullPolicy: Always
+        name: {{ $top.Values.projectName }}-{{ .name }}-service
+        command:
+          - '/bin/bash'
+          - '/work/docker-entrypoint.sh'
+          {{- if $top.Values.postgres.dbHost }}
+          - '$top.Values.postgres.dbHost:{{- if $top.Values.postgres.dbPort }} {{ $top.Values.postgres.dbPort }} {{ else }}5432 {{- end }}'
+          {{- else }}
+          - '{{ $top.Values.projectName }}-postgres-headless-svc.{{ $top.Release.Namespace }}.svc:{{- if $top.Values.postgres.dbPort }} {{ $top.Values.postgres.dbPort }} {{ else }}5432 {{- end }}'
+          {{- end }}
+          - '{{ .serviceName }}'
+        ports:
+          - containerPort: {{ .port }}
+            protocol: TCP
+        volumeMounts:
+          - mountPath: "/etc/secrets"
+            name: service-secret
+            readOnly: true
+          - mountPath: "/etc/conf"
+            name: service-config
+            readOnly: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 2000
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 2000
+        {{- if or .dbName .useRabbit }}
+        env:
+          {{- if .dbName }}
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ $top.Values.projectName }}-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ $top.Values.projectName }}-postgres-secrets
+                key: POSTGRES_USER
+          {{- end }}
+          {{- if .useRabbit }}
+          - name: RABBIT_MQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ $top.Values.projectName }}-rabbit-secrets
+                key: RABBITMQ_DEFAULT_PASS
+          - name: RABBIT_MQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ $top.Values.projectName }}-rabbit-secrets
+                key: RABBITMQ_DEFAULT_USER
+          {{- end }}
+        {{- end }}
+      dnsPolicy: ClusterFirst
+      {{- if .imagePullSecrets.enabled }}
+      imagePullSecrets:
+        - name: {{ .imagePullSecrets.name }}
+      {{- end }}
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 2000
+        fsGroupChangePolicy: Always
+      volumes:
+        - name: service-config
+          configMap:
+            name: {{ $top.Values.projectName }}-{{ .name }}-service-config
+            items:
+            - key: "srv_envs"
+              path: "srv_envs"
+        - name: service-secret
+          secret:
+            secretName: {{ $top.Values.projectName }}-app-secret
+            items:
+            - key: ".srv_secrets"
+              path: ".srv_secrets"
+{{ end }}

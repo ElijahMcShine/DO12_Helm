@@ -1,0 +1,78 @@
+{{ if not .Values.postgres.dbHost }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    version: {{ .Values.version }}
+    {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    app: {{ .Values.projectName }}-postgres-app
+  name: {{ .Values.projectName }}-postgres-app
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: {{ .Values.projectName }}-postgres-headless-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.projectName }}-postgres-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.projectName }}-postgres-app
+    spec:
+      containers:
+      - name: {{ .Values.projectName }}-postgres-app
+        image: {{ .Values.postgres.image }}
+        imagePullPolicy: Always
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.projectName }}-postgres-secrets
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.projectName }}-postgres-secrets
+                key: POSTGRES_USER
+          {{- if .Values.postgres.pvLocalPath }}
+          - name: PGDATA
+            value: /data/pgdata
+          {{- end }}
+        ports:
+          {{- if .Values.postgres.dbPort }}
+          - containerPort: {{ .Values.postgres.dbPort }}
+          {{- else }}
+          - containerPort: 5432
+          {{- end }}
+            name: postgres
+        {{- if .Values.postgres.pvLocalPath }}
+        volumeMounts:
+          - name: postgres-data
+            mountPath: /data
+        {{- end }}
+        resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+            limits:
+              memory: "2Gi"
+              cpu: "2"
+      {{- if .Values.postgres.imagePullSecrets.enabled }}
+      imagePullSecrets:
+        - name: {{ .Values.postgres.imagePullSecrets.name }}
+      {{- end }}
+  {{- if .Values.postgres.pvLocalPath }}
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "{{ .Values.projectName }}-postgres-storage-class"
+      resources:
+        requests:
+          storage: 1Gi
+  {{- end }}
+{{ end }}

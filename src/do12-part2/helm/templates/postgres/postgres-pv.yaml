@@ -1,0 +1,25 @@
+{{ if not .Values.postgres.dbHost }}
+{{ if .Values.postgres.pvLocalPath }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.projectName }}-postgres-data-pv
+  labels:
+    version: {{ .Values.version }}
+    {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: {{ .Values.projectName }}-postgres-storage-class
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: {{ .Values.postgres.pvLocalPath }}
+    type: DirectoryOrCreate
+{{ end }}
+{{ end }}
